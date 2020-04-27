@@ -3,12 +3,84 @@
   padding: 0;
   box-sizing: border-box;
 }
-.background {
+#screen {
+  width:100vw;
+  height: 56.25vw;
+}
+#game{
+  position: relative;
+  width:100%;
+  height:100%
+} 
+#background {
+  position: absolute;
+  top: 0;
+  left 0;
   width: 100vw;
-  height: 100vh;
+  height: 56.25vw;
+  background-image: url(background.png);
+  background-size: 100%;
   object-fit: fill;
 }
-.mushroom {
+#foreground {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100vw;
+  height:56.25vw;
+  background-image: url(foreground.png);
+  background-size:100%;
+  pointer-events: none;
+}
+
+/* EFFECTS */
+.hide {
+  visibility: hidden;
+}
+.show {
+  visibility: visible;
+}
+
+/* ANIMATIONS and why would I need certain ones */
+
+.fade_out {
+  animation-name: fadeout_kf;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframe fadeout_kf {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+} 
+
+
+/* I do not understand the following, including the keyframe */
+
+.disappear {
+  animation-name: disappear_kf;
+  animation-duration: .5s;
+  animation-iteration-count:1;
+  /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);*/
+  animation-fill-mode: forwards;
+}
+
+@keyframes disappear_kf {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 2;
+  }
+
+}
+
+/* .mushroom {
   position: absolute;
   left: 400px;
   top: 600px;
@@ -16,11 +88,12 @@
   animation-duration: 1s;
   animation-fill-mode: forwards;
   transition: all 2s;
-}
+} */
 .pickedUp {
   animation: pickUp 2s linear forwards;
 }
-h1 {
+
+/*h1 {
   display: block;
   position: absolute;
   left: 50px;
@@ -33,15 +106,28 @@ h1 {
   display: grid;
   place-items: center;
   border-radius: 50%;
-}
+}*/
 
-@keyframes enlarge {
+
+.enlarge {
+  animation-name: enlarge_kf;
+  animation-duration: 2s /* gotta check this */
+  /* animation-direction: no idea */
+  animation-timing-function: ease-out /* also have to check if in or out */
+}
+@keyframes enlarge_kf {
   from {
     transform: scale(0);
   }
   to {
     transform: scale(1);
   }
+}
+
+.pickup {
+  animation-name: pickup_kf;
+  animation-duration: 3s;
+  /* IDK what other animation is needed */
 }
 @keyframes pickUp {
   0% {
@@ -57,3 +143,104 @@ h1 {
     opacity: 0;
   }
 }
+
+/* THE MUSHROOMS */
+
+#mushroom_sprite0 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: 
+  cursor: pointer;
+}
+
+#mushroom_sprite1 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: 
+  cursor: pointer;
+}
+
+#mushroom_sprite2 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: 
+  cursor: pointer;
+}
+#mushroom_sprite3 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: 
+  cursor: pointer;
+}
+
+#mushroom_sprite4 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: 
+  cursor: pointer;
+}
+
+#mushroom_sprite5 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: 
+  cursor: pointer;
+}
+
+#mushroom_sprite6 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: 
+  cursor: pointer;
+}
+
+#mushroom_container0,
+#mushroom_container1,
+#mushroom_container2,
+#mushroom_container3,
+#mushroom_container4,
+#mushroom_container5,
+#mushroom_container6 {
+  position: absolute;
+}
+
+.position0 (
+  top: 100px;
+  left: 200px;
+)
+.position1 (
+  top: 300px;
+  left: 400px;
+)
+.position2 (
+  top: 500px;
+  left: 700px;
+)
+.position3 (
+  top: 700px;
+  left: 900px;
+)
+
+.position4 (
+  top: 300px;
+  left: 400px;
+)
+.position5 (
+  top: 500px;
+  left: 700px;
+)
+.position6 (
+  top: 700px;
+  left: 900px;
+)
+
+
+
+
