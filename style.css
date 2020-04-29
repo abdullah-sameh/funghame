@@ -323,7 +323,7 @@ h1 {
     background-size: 100%;
 }
 
-/* the timebar below doesn't work for some reason - it doesn't show in top of the timer.*/
+/* the timebar below doesn't work for some reason - it doesn't show on top of the timer.*/
 
 #timebar {
     position: absolute;
@@ -347,7 +347,7 @@ h1 {
 }
 
 .bar {
-    top: 20vw:;
+    top: 20vw;
     left: 12vw;
 }
 
