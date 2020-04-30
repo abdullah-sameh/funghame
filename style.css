@@ -1,0 +1,422 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#screen {
+    width: 100vw;
+    height: 56.25vw;
+}
+
+#game {
+    position: relative;
+    width: 100%;
+    height: 100%
+}
+
+#background {
+    position: absolute;
+    top: 0;
+    left 0;
+    width: 100vw;
+    height: 56.25vw;
+    background-image: url(SVG/BG.png);
+    background-size: 100%;
+    object-fit: fill;
+}
+
+
+#foreground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 56.25vw;
+    background-image: url(SVG/FG.png);
+    background-size: 100%;
+    pointer-events: none;
+}
+
+/* --------------EFFECTS----------------
+.hide {
+    visibility: hidden;
+}
+
+.show {
+    visibility: visible;
+} */
+
+/* ANIMATIONS (and why would I need certain ones?) */
+
+.fade_out {
+    animation-name: fadeout_kf;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframe fadeout_kf {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+.disappear {
+    animation-name: disappear_kf;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.59, -0.56, .77, 1.34);
+    animation-fill-mode: forwards;
+}
+
+@keyframes disappear_kf {
+    0% {
+        transform: scale(1)
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+.blur {
+    animation-name: blur_kf;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.59, -0.56, .77, 1.34);
+    animation-fill-mode: forwards;
+}
+
+@keyframes blur_kf {
+    0% {
+        filter: blur(0) hue-rotate(0deg)
+    }
+    50% {
+        filter: blur(5px) hue-rotate(180deg)
+    }
+    100% {
+        filter: blur(0px) hue-rotate(0deg)
+    }
+}
+
+
+
+.pickedUp {
+    animation: pickUp 2s linear forwards;
+}
+
+.pulse {
+    animation-name: pulse_kf;
+    animation-duration: 1.7s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in;
+}
+
+@keyframes pulse_kf {
+    0% {
+        transform: scale(0.97);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
+.enlarge {
+    animation-name: enlarge_kf;
+    animation-duration: 2s
+        animation-timing-function: ease-out
+}
+
+@keyframes enlarge_kf {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.pickup {
+    animation-name: pickup_kf;
+    animation-duration: 3s;
+}
+
+@keyframes pickUp {
+    0% {
+        transform: translateX(0) translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    90% {
+        transform: translateX(-380px) translateY(-600px) scale(0.4);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-380px) translateY(-600px) scale(0.4);
+        opacity: 0;
+    }
+}
+
+/* THE MUSHROOMS */
+
+
+.mushroom {
+    position: absolute;
+} 
+
+.mushroom .sprite {
+    width: 12vw;
+    height: 13vw;
+    background-image: url(SVG/orange.svg);
+    background-size: 100%;
+    cursor: pointer;
+}
+
+.mushroom.orange .sprite {
+    background-image: url(SVG/orange.svg);
+}
+
+.mushroom.brown .sprite {
+    background-image: url(SVG/brown.svg);
+}
+.mushroom.red .sprite {
+    background-image: url(SVG/red.svg);
+}
+
+.mushroom.green .sprite {
+    background-image: url(SVG/green.svg);
+}
+
+.mushroom.gray > .sprite {
+    background-image: url(SVG/gray.svg);
+}
+
+.mushroom.blue > .sprite {
+    background-image: url(SVG/blue.svg);
+}
+
+.mushroom.purple > .sprite {
+    background-image: url(SVG/purple.svg);
+}
+
+.position0 {
+    top: 21vw;
+    left: 41vw;
+}
+
+.position1 {
+    top: 18vw;
+    left: 15vw;
+}
+
+.position2 {
+    top: 21vw;
+    left: 57vw;
+}
+
+.position3 {
+    top: 25vw;
+    left: 25vw;
+}
+
+.position4 {
+    top: 38vw;
+    left: 35vw;
+}
+
+.position5 {
+    top: 32vw;
+    left: 74vw;
+}
+
+.position6 {
+    top: 41vw;
+    left: 52vw;
+}
+
+.position7 {
+    top: 13vw;
+    left: 75vw;
+}
+
+.position8 {
+    top: 40.5vw;
+    left: 21.3vw;
+}
+
+#score {
+    position: absolute;
+    width: 9vw;
+    height: 5vw;
+    top: 3.5vw;
+    left: 6vw;
+    background-image: url(SVG/Scoremdpi.svg);
+    background-size: 100%;
+}
+
+.points {
+    display:block;
+    background-color: #421526;
+    position: absolute;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    left: 5.5vw;
+    top: 1.1vw;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 1.6vw;
+    font-family: cooper-black-std, serif;
+    font-weight: 400;
+    line-height: 3vw;
+}
+
+#timebar {
+    position: absolute;
+    width: 29vw;
+    height: 2.5vw;
+    top: 1.54vw;
+    right: 0.9vw;
+    background-image: url(SVG/barmdpi.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+}
+
+#time {
+    position: absolute;
+    width: 35vw;
+    height: 5.3vw;
+    top: 3vw;
+    left: 31vw;
+    background-image: url(SVG/Timemdpi.svg);
+    background-size: 100%;
+}
+
+#health {
+    position: absolute;
+    width: 17vw;
+    height: 5vw;
+    top: 3vw;
+    left: 74vw;
+    background-image: url(SVG/HealthBarmdpi.svg);
+    background-size: 100%;
+}
+
+#heart1 {
+    left: 5.5vw
+}
+
+#heart2 {
+    left: 9.2vw
+}
+
+#heart3 {
+    left: 13vw
+}
+
+.heart {
+    top: 1.2vw;
+    position: absolute;
+    width: 3vw;
+    height: 2.5vw;
+    background-image: url(SVG/heart1mdpi.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.lost {
+    filter: grayscale(1);
+}
+
+.hidden {
+    display: none !important;
+}
+
+#gameOver {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: black;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    font-size: 50px;
+    height: 56.25vw;
+}
+
+#timebar {
+    animation-name: time_kf;
+    animation-duration: 20s;
+    transform-origin: left;
+}
+
+
+@keyframes time_kf {
+    0% {
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform: scaleX(0);
+    }
+}
+
+.slide {
+    animation-name: slide_kf;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide_kf {
+    0% {
+        transform: translate(0vw, 0vw)
+    }
+
+    100% {
+        transform: translate(-100vw, -50vw);
+    }
+}
+
+
+.snail {
+    position: absolute;
+    z-index: 10;
+    width: 16vw;
+    left: 5vw;
+    bottom: 5vw;
+    animation-name: snailkf;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.59, -0.56, .77, 1.34);
+    animation-direction: alternate;
+    transform-origin: bottom;
+}
+
+@keyframes snailkf {
+    0% {
+        transform: scaleY(1);
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        transform: scaleY(1.1);
+        filter: hue-rotate(160deg);
+    }
+}

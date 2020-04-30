@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funghame</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/rwa6lya.css" />
+  </head>
+
+  <body>
+    <div id="screen">
+      <div id="game">
+        <div id="background"></div>
+
+        <div id="elements">
+          <img src="/SVG/slugmdpi.svg" alt="slug" class="snail" />
+          <div id="mushroom_container0" class="mushroom position0 red">
+            <div class="sprite"></div>
+          </div>
+          <div id="mushroom_container1" class="mushroom position1 gray">
+            <div class="sprite"></div>
+          </div>
+          <div id="mushroom_container2" class="mushroom position2 green">
+            <div class="sprite"></div>
+          </div>
+          <div id="mushroom_container3" class="mushroom position3 brown">
+            <div class="sprite"></div>
+          </div>
+          <div id="mushroom_container4" class="mushroom position4 red">
+            <div class="sprite"></div>
+          </div>
+          <div id="mushroom_container5" class="mushroom position5 blue">
+            <div class="sprite"></div>
+          </div>
+          <div id="mushroom_container6" class="mushroom position6 gray">
+            <div class="sprite"></div>
+          </div>
+          <div id="mushroom_container7" class="mushroom position7 gray">
+            <div class="sprite"></div>
+          </div>
+          <div id="mushroom_container8" class="mushroom position8 purple">
+            <div class="sprite"></div>
+          </div>
+        </div>
+      </div>
+      <div id="foreground"></div>
+      <div id="ui">
+        <div id="score">
+          <div id="points" class="points">0</div>
+        </div>
+        <div id="health">
+          <div id="heart1" class="heart"></div>
+          <div id="heart2" class="heart"></div>
+          <div id="heart3" class="heart"></div>
+        </div>
+        <div id="time">
+          <div id="timebar" class="bar"></div>
+        </div>
+      </div>
+    </div>
+    <div id="gameOver" class="hidden">
+      Game Over, you lost!
+    </div>
+
+    <div id="start"></div>
+    <div id="gameover"></div>
+    <div id="levelcomplete"></div>
+    <div id="settings" class="hide"></div>
+    <div id="settings_btn"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
