@@ -21,10 +21,11 @@
     left 0;
     width: 100vw;
     height: 56.25vw;
-    background-image: url(SVG/BG.svg);
+    background-image: url(SVG/BG.png);
     background-size: 100%;
     object-fit: fill;
 }
+
 
 #foreground {
     position: absolute;
@@ -32,7 +33,7 @@
     left: 0;
     width: 100vw;
     height: 56.25vw;
-    background-image: url(SVG/FG.svg);
+    background-image: url(SVG/FG.png);
     background-size: 100%;
     pointer-events: none;
 }
@@ -66,11 +67,9 @@
 }
 
 
-/* I do not understand the following, including the keyframe */
-
 .disappear {
     animation-name: disappear_kf;
-    animation-duration: .5s;
+    animation-duration: 1s;
     animation-iteration-count: 1;
     animation-timing-function: cubic-bezier(.59, -0.56, .77, 1.34);
     animation-fill-mode: forwards;
@@ -84,21 +83,29 @@
     100% {
         transform: scale(0);
     }
-
 }
 
-/* ------ FROM THE FIRST LINE OF CODE BY ADAM ------
+.blur {
+    animation-name: blur_kf;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.59, -0.56, .77, 1.34);
+    animation-fill-mode: forwards;
+}
 
-.mushroom {
-  position: absolute;
-  left: 400px;
-  top: 600px;
-  width: 100px;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  transition: all 2s;
-} 
-*/
+@keyframes blur_kf {
+    0% {
+        filter: blur(0) hue-rotate(0deg)
+    }
+    50% {
+        filter: blur(5px) hue-rotate(180deg)
+    }
+    100% {
+        filter: blur(0px) hue-rotate(0deg)
+    }
+}
+
+
 
 .pickedUp {
     animation: pickUp 2s linear forwards;
@@ -122,30 +129,12 @@
     }
 }
 
-/* ------ THE SCORE CODE WRITTEN BY ADAM -----
-h1 {
-    display: block;
-    position: absolute;
-    left: 50px;
-    top: 50px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    background: skyblue;
-    width: 50px;
-    height: 50px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-}*/
 
 
 .enlarge {
     animation-name: enlarge_kf;
     animation-duration: 2s
-        /* gotta check this */
-        /* animation-direction: no idea */
         animation-timing-function: ease-out
-        /* also have to check if in or out */
 }
 
 @keyframes enlarge_kf {
@@ -161,7 +150,6 @@ h1 {
 .pickup {
     animation-name: pickup_kf;
     animation-duration: 3s;
-    /* IDK what other animation is needed */
 }
 
 @keyframes pickUp {
@@ -183,71 +171,12 @@ h1 {
 
 /* THE MUSHROOMS */
 
-#mushroom_sprite0 {
-    width: 12vw;
-    height: 13vw;
-    background-image: url(SVG/poisonous.svg);
-    background-size: 100%;
-    cursor: pointer;
-}
 
-#mushroom_sprite1 {
-    width: 12vw;
-    height: 13vw;
-    background-image: url(SVG/blue.svg);
-    background-size: 100%;
-    cursor: pointer;
-}
+.mushroom {
+    position: absolute;
+} 
 
-#mushroom_sprite2 {
-    width: 12vw;
-    height: 13vw;
-    background-image: url(SVG/purple.svg);
-    background-size: 100%;
-    cursor: pointer;
-}
-
-#mushroom_sprite3 {
-    width: 12vw;
-    height: 13vw;
-    background-image: url(SVG/inedible.svg);
-    background-size: 100%;
-    cursor: pointer;
-}
-
-#mushroom_sprite4 {
-    width: 12vw;
-    height: 13vw;
-    background-image: url(SVG/red.svg);
-    background-size: 100%;
-    cursor: pointer;
-}
-
-#mushroom_sprite5 {
-    width: 12vw;
-    height: 13vw;
-    background-image: url(SVG/green.svg);
-    background-size: 100%;
-    cursor: pointer;
-}
-
-#mushroom_sprite6 {
-    width: 12vw;
-    height: 13vw;
-    background-image: url(SVG/gray.svg);
-    background-size: 100%;
-    cursor: pointer;
-}
-
-#mushroom_sprite7 {
-    width: 12vw;
-    height: 13vw;
-    background-image: url(SVG/inedible.svg);
-    background-size: 100%;
-    cursor: pointer;
-}
-
-#mushroom_sprite8 {
+.mushroom .sprite {
     width: 12vw;
     height: 13vw;
     background-image: url(SVG/orange.svg);
@@ -255,22 +184,36 @@ h1 {
     cursor: pointer;
 }
 
-#mushroom_container0,
-#mushroom_container1,
-#mushroom_container2,
-#mushroom_container3,
-#mushroom_container4,
-#mushroom_container5,
-#mushroom_container6,
-#mushroom_container7,
-#mushroom_container8 {
-    position: absolute;
+.mushroom.orange .sprite {
+    background-image: url(SVG/orange.svg);
+}
+
+.mushroom.brown .sprite {
+    background-image: url(SVG/brown.svg);
+}
+.mushroom.red .sprite {
+    background-image: url(SVG/red.svg);
+}
+
+.mushroom.green .sprite {
+    background-image: url(SVG/green.svg);
+}
+
+.mushroom.gray > .sprite {
+    background-image: url(SVG/gray.svg);
+}
+
+.mushroom.blue > .sprite {
+    background-image: url(SVG/blue.svg);
+}
+
+.mushroom.purple > .sprite {
+    background-image: url(SVG/purple.svg);
 }
 
 .position0 {
     top: 21vw;
     left: 41vw;
-    /*transform: scale(1.2)*/
 }
 
 .position1 {
@@ -309,30 +252,47 @@ h1 {
 }
 
 .position8 {
-    top: 41.5vw;
+    top: 40.5vw;
     left: 21.3vw;
 }
 
 #score {
     position: absolute;
-    width: 15vw;
+    width: 9vw;
     height: 5vw;
-    top: auto;
-    left: auto;
-    background-image: url();
+    top: 3.5vw;
+    left: 6vw;
+    background-image: url(SVG/Scoremdpi.svg);
     background-size: 100%;
 }
 
-/* the timebar below doesn't work for some reason - it doesn't show on top of the timer.*/
+.points {
+    display:block;
+    background-color: #421526;
+    position: absolute;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    left: 5.5vw;
+    top: 1.1vw;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 1.6vw;
+    font-family: cooper-black-std, serif;
+    font-weight: 400;
+    line-height: 3vw;
+}
 
 #timebar {
     position: absolute;
-    width: 30vw;
-    height: 5vw;
-    top: 3vw;
-    left: 74vw;
+    width: 29vw;
+    height: 2.5vw;
+    top: 1.54vw;
+    right: 0.9vw;
     background-image: url(SVG/barmdpi.svg);
     background-size: 100%;
+    background-repeat: no-repeat;
 
 }
 
@@ -346,11 +306,6 @@ h1 {
     background-size: 100%;
 }
 
-.bar {
-    top: 20vw;
-    left: 12vw;
-}
-
 #health {
     position: absolute;
     width: 17vw;
@@ -362,53 +317,106 @@ h1 {
 }
 
 #heart1 {
-    position: absolute;
-    width: 3vw;
-    height: 2.5vw;
-    background-image: url(SVG/heart1mdpi.svg);
-    background-size: 100%;
-}
-
-.heart_1 {
-    top: 1.3vw;
     left: 5.5vw
 }
 
 #heart2 {
+    left: 9.2vw
+}
+
+#heart3 {
+    left: 13vw
+}
+
+.heart {
+    top: 1.2vw;
     position: absolute;
     width: 3vw;
     height: 2.5vw;
     background-image: url(SVG/heart1mdpi.svg);
     background-size: 100%;
+    background-repeat: no-repeat;
 }
 
-.heart_2 {
-    top: 1.3vw;
-    left: 9.2vw
+.lost {
+    filter: grayscale(1);
 }
 
-#heart3 {
+.hidden {
+    display: none !important;
+}
+
+#gameOver {
     position: absolute;
-    width: 3vw;
-    height: 2.5vw;
-    background-image: url(SVG/lostHeartmdpi.svg);
-    background-size: 100%;
+    top: 0;
+    left: 0;
+    background: black;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    font-size: 50px;
+    height: 56.25vw;
 }
 
-.heart_3 {
-    top: 1.3vw;
-    left: 13vw
+#timebar {
+    animation-name: time_kf;
+    animation-duration: 20s;
+    transform-origin: left;
 }
 
-/*#points {
+
+@keyframes time_kf {
+    0% {
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform: scaleX(0);
+    }
+}
+
+.slide {
+    animation-name: slide_kf;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide_kf {
+    0% {
+        transform: translate(0vw, 0vw)
+    }
+
+    100% {
+        transform: translate(-100vw, -50vw);
+    }
+}
+
+
+.snail {
     position: absolute;
-    left: 50px;
-    top: 50px;
-    color: burlywood;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #fff;
-    width: 7vw;
-    height: 7vw;
-    place-items: center;
-    border-radius: 50%;
-}*/
+    z-index: 10;
+    width: 16vw;
+    left: 5vw;
+    bottom: 5vw;
+    animation-name: snailkf;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.59, -0.56, .77, 1.34);
+    animation-direction: alternate;
+    transform-origin: bottom;
+}
+
+@keyframes snailkf {
+    0% {
+        transform: scaleY(1);
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        transform: scaleY(1.1);
+        filter: hue-rotate(160deg);
+    }
+}
